@@ -1,5 +1,5 @@
 // La valeur de jet_lag doit être la même que dans system/Utils::time()
-var jet_lag = 1;
+var jet_lag = 0;
 
 // Chargement du module AJAX
 function loadAjax() {
