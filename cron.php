@@ -6,7 +6,7 @@
  * voir les constantes ci-dessous
  */
 
-define('KEY', '');  // Clé servant à protéger l'accès à ce fichier
+define('KEY', 'insert-random-secret-key-here');  // Clé servant à protéger l'accès à ce fichier
 define('INTERVAL', 600); // Interval entre chaque "Ping"
 define('CRITICAL_INTERVAL', 60); // Interval en cas de "pré-down" (voir plus bas
 
