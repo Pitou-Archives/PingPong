@@ -4,7 +4,7 @@ Little tool for monitoring your network applications status (UP or DOWN) - /!\ F
 
 # Documentation
 
-Pour les commentaires explicatifs, c'est ici que ça se passe:
+Pour les commentaires explicatifs, c'est ici que Ã§a se passe:
 
 - app/controllers/home.php
 - assets/css/style.css
@@ -13,12 +13,30 @@ Pour les commentaires explicatifs, c'est ici que ça se passe:
 
 Vous devez mettre en place une cron pour que cela fonctionne: explications dans cron.sh
 
-# Base de données
+# Base de donnÃ©es
 
-Editez system/Database.php pour connecter PingPong à votre propre serveur de BDD.
+Editez system/Database.php pour connecter PingPong Ã  votre propre serveur de BDD.
 
 La structure SQL est fournie dans ping_pong.sql
 
 # Configuration serveur
 
-Le fichier de configuration Apache (.htaccess) est fourni. Pour les hérétiques barbus qui utilisent NGINX, Débrouillez-vous <3
+##Apache
+Le fichier(.htaccess) est fourni.
+
+##Nginx
+InsÃ©rez ce code dans votre virtual host.
+```
+location / {
+    rewrite ^/google([0-9a-f]+)\.html$ /index.php?arg=google/$1 ;
+    if (!-f $request_filename){
+      set $rule_1 1$rule_1;
+    }
+    if (!-d $request_filename){
+      set $rule_1 2$rule_1;
+    }
+    if ($rule_1 = "21"){
+      rewrite ^/(.*)$ /index.php?arg=$1 last;
+    }
+}
+```
