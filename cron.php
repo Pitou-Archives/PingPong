@@ -46,6 +46,14 @@ function sendFreeSMS($content){
 	shell_exec("curl -k -X POST $url --header 'Content-Type: application/json' --data-binary '$postdata'");
 }
 
+function notifyManager($notification){
+	/* Gérer ici quels notifcations doivent être envoyés.
+	Configurer correctement le service en question dans sa fonction,
+	puis décommenter l'appel de la fonction pour faire fonctionner les notifications sur ce service. */
+
+	//sendPushbulletNotification($notification);
+	//sendFreeSMS($notification);
+}
 // Empêche le script d'être lancé via le web (CLI seulement)
 if (isset($argc, $argv)) {
 
@@ -81,7 +89,7 @@ if (isset($argc, $argv)) {
 							$bdd->query("UPDATE service SET status=3, next_checking_timestamp=$nextCheckTimestamp WHERE id=$id");
 
 							// Envoi de la notif de DOWN
-							sendPushbulletNotification($res['name'].': **DOWN**');
+							notifyManager($res['name'].': **DOWN**');
 						break;
 
 						// Si le service est déjà down
@@ -118,7 +126,7 @@ if (isset($argc, $argv)) {
 					// Si le service était DOWN
 					if ($res['status'] == 3) {
 						// Envoi de la notif d'UP
-						sendPushbulletNotification($res['name'].': **UP**');
+						notifyManager($res['name'].': **UP**');
 					}
 
 					$bdd->query("UPDATE service SET status=1, next_checking_timestamp=$nextCheckTimestamp WHERE id=$id");
