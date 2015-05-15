@@ -3,8 +3,6 @@ Options -indexes
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    RewriteRule ^google([0-9a-f]+)\.html$ index.php?arg=google/$1
-
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 
