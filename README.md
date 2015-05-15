@@ -28,7 +28,6 @@ Le fichier(.htaccess) est fourni.
 Insérez ce code dans votre virtual host.
 ```
 location / {
-    rewrite ^/google([0-9a-f]+)\.html$ /index.php?arg=google/$1 ;
     if (!-f $request_filename){
       set $rule_1 1$rule_1;
     }
