@@ -28,7 +28,7 @@ class Model {
 			$q_args[] = '?';
 		}
 		$str = implode(', ', $q_args);
-		$req = self::$bdd->prepare("INSERT INTO $this->table_name VALUES('', $str)");
+		$req = self::$bdd->prepare("INSERT INTO $this->table_name VALUES(null, $str)");
 		$req->execute($args);
 		return self::$bdd->lastInsertId();
 	}

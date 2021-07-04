@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', true);
+ini_set('display_startup_errors', true);
+error_reporting(E_ALL);
 $SERVICE = $controller->callModel('service');
 
 // Ajout d'un nouveau service via le formulaire
@@ -22,7 +25,7 @@ switch (@$arg[0]) {
 		header('location:'.WEBROOT);
 		exit();
 	break;
-	
+
 	//home/delete/:id
 	case 'delete':
 		// Suppression du service :id
